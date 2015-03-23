@@ -38,7 +38,7 @@ Configure_Dhcp()
         done
 
 
-        #final_subnet_string+="subnet $STARTING_IP_RANGE.$NUMBER_OF_VLANS.0 netmask $subnet {\n\trange $STARTING_IP_RANGE.$NUMBER_OF_VLANS.2 $STARTING_IP_RANGE.$NUMBER_OF_VLANS.$end_range;\n\toption routers $STARTING_IP_RANGE.$NUMBER_OF_VLANS.1;\n\toption broadcast-address $STARTING_IP_RANGE.$NUMBER_OF_VLANS.255;\n\toption subnet-mask $subnet;\n}\n\n"
+        final_subnet_string+="subnet $STARTING_IP_RANGE.$NUMBER_OF_VLANS.0 netmask $subnet {\n\trange $STARTING_IP_RANGE.$NUMBER_OF_VLANS.2 $STARTING_IP_RANGE.$NUMBER_OF_VLANS.$end_range;\n\toption routers $STARTING_IP_RANGE.$NUMBER_OF_VLANS.1;\n\toption broadcast-address $STARTING_IP_RANGE.$NUMBER_OF_VLANS.255;\n\toption subnet-mask $subnet;\n}\n\n"
 
         echo -e $final_subnet_string >> /etc/dhcp/dhcpd.conf
         sed -i -e "s/option domain-name/#option domain-name/g" /etc/dhcp/dhcpd.conf
